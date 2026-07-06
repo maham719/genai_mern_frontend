@@ -1,7 +1,11 @@
 import  axios from "axios"
- window.location.hostname === "localhost"
+
+const api =axios.create({
+    baseURL: window.location.hostname === "localhost"
       ? "http://localhost:3005"
-      : "https://genai-mern.vercel.app/"
+      : "https://genai-mern.vercel.app/",
+    withCredentials:true
+})
 export async function register({name,email,password}){
    try {
     const response= await api.post("/api/auth/register",{
