@@ -209,9 +209,7 @@ const Interview = () => {
         </nav>
 
         <div className="sidebar-footer">
- <button className='logout-btn2 button primary-button' onClick={handleLogout}>
-            Logout
-          </button>
+ 
        <div className="getpdfcontainer">
         <div className="tooltip-wrapper">
           <button 
@@ -238,6 +236,9 @@ const Interview = () => {
           </div>
         )}
         </div>
+        <button className='logout-btn2 button primary-button' onClick={handleLogout}>
+            Logout
+          </button>
         </div>
         
       </aside>
