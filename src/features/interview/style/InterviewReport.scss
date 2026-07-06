@@ -1,0 +1,437 @@
+.interview-report-container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem;
+  background-color: #0f1419;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.report-header-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 2rem;
+}
+.report-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.report-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.5px;
+}
+
+.report-subtitle {
+  font-size: 1rem;
+  color: #8b92a0;
+  margin: 0;
+  font-weight: 400;
+}
+
+.report-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+}
+
+// Form Sections
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  background-color: rgba(22, 25, 38, 0.5);
+  border: 1px solid rgba(120, 119, 198, 0.2);
+  border-radius: 0.75rem;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.header-bar {
+  width: 4px;
+  height: 18px;
+  background-color: #f61488;
+  border-radius: 2px;
+}
+
+.section-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+// Left Column - Job Description
+.job-description-section {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  min-height: 350px;
+}
+
+.job-description-section .textarea-input {
+  flex: 1;
+}
+
+// Right Column Layout
+.form-right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+// Resume Section
+.resume-section {
+  min-height: auto;
+}
+
+// Upload Area
+.upload-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border: 2px dashed rgba(120, 119, 198, 0.3);
+  border-radius: 0.5rem;
+  background-color: rgba(22, 25, 38, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+
+  &:hover {
+    border-color: rgba(120, 119, 198, 0.5);
+    background-color: rgba(22, 25, 38, 0.5);
+  }
+}
+
+.upload-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  background-color: rgba(120, 119, 198, 0.1);
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  color: #8b92a0;
+  transition: all 0.3s ease;
+}
+
+.upload-area:hover .upload-icon {
+  color: #f61488;
+  background-color: rgba(255, 72, 88, 0.1);
+}
+
+.upload-text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #ffffff;
+  margin: 0;
+}
+
+.upload-subtext {
+  font-size: 0.85rem;
+  color: #8b92a0;
+  margin: 0.25rem 0 0 0;
+}
+
+.file-input {
+  display: none;
+}
+
+// Upload Progress
+.upload-progress-container {
+  width: 100%;
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}
+
+.progress-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0.5rem;
+}
+
+.progress-text {
+  font-size: 0.9rem;
+  color: #f61488;
+}
+
+.progress-percentage {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #f61488;
+}
+
+.progress-bar-wrapper {
+  width: 100%;
+  height: 4px;
+  background-color: rgba(120, 119, 198, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #f61488 0%, #f61488 100%);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+// Self Description Section
+.self-description-section {
+  min-height: auto;
+}
+
+.self-description-section .textarea-input {
+  min-height: 150px;
+}
+
+// Textarea Input
+.textarea-input {
+  width: 100%;
+  padding: 1rem;
+  background-color: rgba(22, 25, 38, 0.8);
+  border: 1px solid rgba(120, 119, 198, 0.2);
+  border-radius: 0.5rem;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  resize: none;
+  outline: none;
+  transition: all 0.2s ease;
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  &:focus {
+    border-color: rgba(255, 72, 88, 0.5);
+    background-color: rgba(22, 25, 38, 1);
+  }
+}
+
+// Warning Message
+.warning-message {
+  font-size: 0.85rem;
+  color: #f61488;
+  margin: 0;
+  padding: 0 0.5rem;
+  text-align: center;
+}
+
+// Generate Button
+.generate-button {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, #f61488 0%, #f61488 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(246, 20, 136, 0.3);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.button-arrow {
+  margin-left: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.generate-button:hover .button-arrow {
+  transform: translateX(4px);
+}
+.logout-btn{
+  width: 20%;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, #f61488 0%, #f61488 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(246, 20, 136, 0.3);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Previous Reports Section
+.previous-reports-section {
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 3rem;
+  padding: 2rem;
+  background-color: rgba(22, 25, 38, 0.5);
+  border: 1px solid rgba(120, 119, 198, 0.2);
+  border-radius: 0.75rem;
+}
+
+.previous-reports-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 1.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  &::before {
+    content: '';
+    width: 4px;
+    height: 24px;
+    background-color: #f61488;
+    border-radius: 2px;
+  }
+}
+
+.reports-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.report-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background-color: rgba(22, 25, 38, 0.6);
+  border: 1px solid rgba(120, 119, 198, 0.15);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: rgba(22, 25, 38, 0.9);
+    border-color: rgba(246, 20, 136, 0.4);
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(246, 20, 136, 0.15);
+  }
+}
+
+.report-date {
+  font-size: 0.85rem;
+  color: #f61488;
+  font-weight: 600;
+  min-width: 100px;
+}
+
+.report-job {
+  font-size: 0.95rem;
+  color: #8b92a0;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+.report-item:hover .report-job {
+  color: #d0d5e0;
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .report-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .job-description-section {
+    grid-column: 1;
+    grid-row: auto;
+    min-height: 250px;
+  }
+
+  .report-title {
+    font-size: 1.75rem;
+  }
+
+  .interview-report-container {
+    padding: 1rem;
+  }
+
+  .previous-reports-section {
+    padding: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .previous-reports-title {
+    font-size: 1.1rem;
+  }
+
+  .report-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .report-date {
+    min-width: auto;
+  }
+
+  .report-job {
+    width: 100%;
+  }
+}
