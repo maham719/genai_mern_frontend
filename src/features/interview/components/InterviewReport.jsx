@@ -8,6 +8,8 @@ const {handleLogout}=useAuth()
 const{loading,generateReport,reports,getReports}=useInterview()
 const [jobDescription,setJobDescription]=useState("")
 const [selfDescription,setSelfDescription]=useState("")
+const [selectedResume,setSelectedResume]=useState(null)
+const [resumePreviewUrl,setResumePreviewUrl]=useState("")
 const resumeInputRef=useRef(null)
 const navigate=useNavigate()
 console.log(reports)
@@ -15,6 +17,22 @@ console.log(reports)
 useEffect(() => {
   getReports();
 }, []);
+
+useEffect(() => {
+  return () => {
+    if (resumePreviewUrl) {
+      URL.revokeObjectURL(resumePreviewUrl)
+    }
+  }
+}, [resumePreviewUrl])
+
+const handleResumeChange = (event) => {
+  const resume = event.target.files?.[0]
+  if (!resume) return
+
+  setSelectedResume(resume)
+  setResumePreviewUrl(resume.type === 'application/pdf' ? URL.createObjectURL(resume) : '')
+}
 
 const handleGenerateReport=async()=>{
   
@@ -91,8 +109,36 @@ if (loading) {
     name='resume'
     accept='.pdf,.doc,.docx'
     className='file-input'
+    onChange={handleResumeChange}
   />
 </div>
+
+            {selectedResume && (
+              <div className='resume-preview'>
+                <div className='resume-preview-header'>
+                  <div>
+                    <p className='resume-file-name'>{selectedResume.name}</p>
+                    <p className='resume-file-size'>{(selectedResume.size / 1024 / 1024).toFixed(2)} MB</p>
+                  </div>
+                  <button
+                    type='button'
+                    className='change-resume-button'
+                    onClick={() => resumeInputRef.current.click()}
+                  >
+                    Change
+                  </button>
+                </div>
+                {resumePreviewUrl ? (
+                  <iframe
+                    className='resume-preview-frame'
+                    src={resumePreviewUrl}
+                    title='Resume preview'
+                  />
+                ) : (
+                  <p className='resume-preview-message'>Preview is available for PDF files.</p>
+                )}
+              </div>
+            )}
 
             {/* Upload Progress - Optional state */}
             <div className='upload-progress-container'>
