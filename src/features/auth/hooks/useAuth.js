@@ -13,7 +13,8 @@ export const useAuth=()=>{
        const data=await login({email,password})
    setUser(data.user)
    } catch (error) {
-    
+    console.error("Login error:", error);
+    throw error;
    }finally{
    setLoading(false)
 
@@ -27,7 +28,8 @@ export const useAuth=()=>{
              const data = await register({name,email,password})
         setUser(data.user)
         } catch (error) {
-            
+            console.error("Registration error:", error);
+            throw error;
         }finally{
         setLoading(false)
 

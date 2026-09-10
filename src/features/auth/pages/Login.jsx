@@ -3,6 +3,7 @@ import "../auth.form.scss"
 import { Link } from 'react-router'
 import { useAuth } from '../hooks/useAuth.js'
 import { useNavigate } from 'react-router'
+import { toast } from "react-toastify";
 const Login = () => {
 
     const {loading,handleLogin}=useAuth()
@@ -10,15 +11,28 @@ const Login = () => {
     const [password,setPassword]=useState("")
   const navigate=useNavigate()
 
-    const handleSubmit=async(e)=>{
-        e.preventDefault()
-       await handleLogin({email,password})
-       navigate("/home")
-    }
+const handleSubmit = async (e) => {
+    e.preventDefault();
 
+    try {
+        const result = await handleLogin({ email, password });
+
+        toast.success(result?.message || "Login successful!");
+
+        navigate("/home");
+
+    } catch (error) {
+        console.error("Login error:", error);
+
+        toast.error(
+            error?.response?.data?.message ||
+            "Login failed. Please try again."
+        );
+    }
+};
     if(loading){
         return(<main><h1>Loading...</h1></main>)
-    }
+    } 
   return (
     <main>
         <div className="form-container">

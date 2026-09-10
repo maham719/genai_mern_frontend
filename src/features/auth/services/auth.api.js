@@ -14,6 +14,7 @@ export async function register({name,email,password}){
     return response.data
    } catch (error) {
     console.log(error)
+    throw error
    }
 }
 
@@ -28,6 +29,7 @@ export async function login({email,password}){
     return response.data
     } catch (error) {
         console.log(error)
+        throw error
     }
 }
 
@@ -38,6 +40,7 @@ try {
     return response.data
 } catch (error) {
     console.log(error)
+    throw error
 }
 }
 
@@ -48,5 +51,6 @@ export async function getme (){
         return response.data
     } catch (error) {
         console.log(error)
+       throw error
     }
 }

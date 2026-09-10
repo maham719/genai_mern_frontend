@@ -7,16 +7,34 @@ const api=axios.create({
     withCredentials:true
 })
 
-export const getInterviewReport=async({jobDescription,selfDescription,resume})=>{
-    const formData=new FormData()
-    formData.append("jobDescription",jobDescription)
-    formData.append("selfDescription",selfDescription)
-    formData.append("resume",resume)
+export const getInterviewReport = async ({
+  jobDescription,
+  selfDescription,
+  resume
+}) => {
+  try {
+    const formData = new FormData();
 
-    const response =await api.post("/api/interview/",formData)
-    return response.data
-}
+    formData.append("jobDescription", jobDescription);
+    formData.append("selfDescription", selfDescription);
+    formData.append("resume", resume);
 
+    const response = await api.post(
+      "/api/interview/",
+      formData
+    );
+
+    return response.data;
+
+  } catch (error) {
+    console.error("Interview report API error:", error);
+
+    // IMPORTANT:
+    // Don't swallow the Axios error.
+    // Pass it back to the React component.
+    throw error;
+  }
+};
 
 export const getInterviewReportByID=async(interviewID)=>{
         const response= await api.get(`/api/interview/report/${interviewID}`)

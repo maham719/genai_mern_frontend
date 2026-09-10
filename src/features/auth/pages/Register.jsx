@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router'
 import { useAuth } from '../hooks/useAuth.js'
+import { toast } from "react-toastify";
 const Register = () => {
     const {loading,handleRegister}=useAuth()
     const [name,setName]=useState("")
@@ -10,8 +11,18 @@ const Register = () => {
     const navigate=useNavigate()
     const handleSubmit=async(e)=>{
         e.preventDefault();
-        await handleRegister({name,email,password})
+        try {
+            const result=  await handleRegister({name,email,password})
+              toast.success(result?.message || "Registration successful!");
         navigate("/login")
+        } catch (error) {
+
+            toast.error(
+                error?.response?.data?.message ||
+                "Registration failed. Please try again."
+            );
+        }
+      
     }
   return (
     <main>

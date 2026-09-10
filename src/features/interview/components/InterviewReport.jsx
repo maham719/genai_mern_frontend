@@ -3,6 +3,8 @@ import '../style/InterviewReport.scss'
 import { useInterview } from '../hook/useInterview.js'
 import { useNavigate } from 'react-router'
 import { useAuth } from '../../auth/hooks/useAuth.js'
+import { toast } from "react-toastify";
+
 const InterviewReport = () => {
 const {handleLogout}=useAuth()
 const{loading,generateReport,reports,getReports}=useInterview()
@@ -12,6 +14,7 @@ const [selectedResume,setSelectedResume]=useState(null)
 const [resumePreviewUrl,setResumePreviewUrl]=useState("")
 const resumeInputRef=useRef(null)
 const navigate=useNavigate()
+
 console.log(reports)
 
 useEffect(() => {
@@ -34,12 +37,31 @@ const handleResumeChange = (event) => {
   setResumePreviewUrl(resume.type === 'application/pdf' ? URL.createObjectURL(resume) : '')
 }
 
-const handleGenerateReport=async()=>{
-  
-  const resume=resumeInputRef?.current.files[0]
-  const data=await generateReport({jobDescription,selfDescription,resume})
-   navigate(`/interview/${data._id}`)
-}
+const handleGenerateReport = async () => {
+  try {
+    const resume = resumeInputRef?.current?.files[0];
+
+    const data = await generateReport({
+      jobDescription,
+      selfDescription,
+      resume
+    });
+
+    toast.success(
+      data?.message || "Report generated successfully!"
+    );
+
+    navigate(`/interview/${data?.interviewReport?._id}`);
+
+  } catch (error) {
+    console.error("Generate report error:", error);
+
+    toast.error(
+      error?.response?.data?.message ||
+      "Failed to generate report. Please try again."
+    );
+  }
+};
 
 
 if (loading) {
