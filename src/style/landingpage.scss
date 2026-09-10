@@ -556,3 +556,61 @@ $accent-purple: rgba(120, 119, 198, 0.1);
     max-width: 100%;
   }
 }
+
+@media (max-width: 480px) {
+  .hero-section,
+  .stats-section,
+  .features-section,
+  .how-it-works-section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle,
+  .section-subtitle {
+    font-size: 1rem;
+  }
+
+  .hero-visual {
+    height: 240px;
+  }
+
+  .visual-circle {
+    width: 210px;
+    height: 210px;
+  }
+
+  .visual-circle img {
+    width: 120px;
+  }
+
+  .stats-section,
+  .features-section,
+  .how-it-works-section {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .stat-card,
+  .feature-card,
+  .step {
+    padding: 1.5rem;
+  }
+
+  .cta-section {
+    margin: 2rem 0.75rem;
+    padding: 2.5rem 1rem;
+  }
+
+  .cta-title {
+    font-size: 1.6rem;
+  }
+
+  .footer-links {
+    gap: 1rem;
+  }
+}

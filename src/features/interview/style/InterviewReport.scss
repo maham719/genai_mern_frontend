@@ -504,6 +504,27 @@
 
 // Responsive Design
 @media (max-width: 768px) {
+  .report-header-container {
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .report-header {
+    flex: 1;
+    text-align: left;
+    margin-bottom: 0;
+  }
+
+  .report-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .logout-btn {
+    width: auto;
+    flex: 0 0 auto;
+    padding: 0.75rem 1rem;
+  }
+
   .report-content {
     grid-template-columns: 1fr;
     gap: 1.5rem;
@@ -538,11 +559,62 @@
     gap: 0.5rem;
   }
 
+  .report-item .report-title {
+    width: 100%;
+    overflow-wrap: anywhere;
+  }
+
   .report-date {
     min-width: auto;
   }
 
   .report-job {
     width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .interview-report-container {
+    padding: 1rem 0.75rem;
+    justify-content: flex-start;
+  }
+
+  .report-header-container {
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+  }
+
+  .report-header {
+    width: 100%;
+  }
+
+  .report-title {
+    font-size: 1.35rem;
+  }
+
+  .report-content {
+    gap: 1rem;
+  }
+
+  .form-section,
+  .previous-reports-section {
+    padding: 1rem;
+  }
+
+  .upload-area {
+    padding: 1.5rem 1rem;
+  }
+
+  .resume-preview-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .change-resume-button {
+    width: 100%;
+  }
+
+  .resume-preview-frame {
+    height: 18rem;
   }
 }
