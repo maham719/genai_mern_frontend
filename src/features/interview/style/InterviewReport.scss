@@ -1,12 +1,33 @@
 .interview-report-container {
   width: 100%;
   min-height: 100vh;
+  box-sizing: border-box;
   padding: 2rem;
   background-color: #0f1419;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(246, 20, 136, 0.55) rgba(22, 25, 38, 0.75);
+}
+
+.interview-report-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.interview-report-container::-webkit-scrollbar-track {
+  background: rgba(22, 25, 38, 0.75);
+}
+
+.interview-report-container::-webkit-scrollbar-thumb {
+  background: rgba(246, 20, 136, 0.55);
+  border: 2px solid #0f1419;
+  border-radius: 999px;
+}
+
+.interview-report-container::-webkit-scrollbar-thumb:hover {
+  background: #f61488;
 }
 .report-header-container{
   display: flex;
@@ -42,6 +63,7 @@
   gap: 2rem;
   width: 100%;
   max-width: 1200px;
+  min-width: 0;
 }
 
 // Form Sections
@@ -94,6 +116,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  min-width: 0;
 }
 
 // Resume Section
@@ -154,6 +177,94 @@
 
 .file-input {
   display: none;
+}
+
+.resume-preview {
+  width: 100%;
+  min-width: 0;
+  margin-top: 1rem;
+  overflow: hidden;
+  border: 1px solid rgba(120, 119, 198, 0.35);
+  border-radius: 0.75rem;
+  background: linear-gradient(145deg, rgba(22, 25, 38, 0.9), rgba(15, 20, 25, 0.95));
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+}
+
+.resume-preview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-width: 0;
+  padding: 0.75rem 1rem;
+  background-color: rgba(120, 119, 198, 0.08);
+  border-bottom: 1px solid rgba(120, 119, 198, 0.2);
+}
+
+.resume-preview-header > div {
+  min-width: 0;
+}
+
+.resume-file-name,
+.resume-file-size {
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.resume-file-name {
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.resume-file-size,
+.resume-preview-message {
+  color: #8b92a0;
+  font-size: 0.8rem;
+}
+
+.resume-file-size {
+  margin-top: 0.2rem;
+}
+
+.change-resume-button {
+  flex: 0 0 auto;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid rgba(246, 20, 136, 0.55);
+  border-radius: 0.4rem;
+  background-color: rgba(246, 20, 136, 0.08);
+  color: #f61488;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: rgba(246, 20, 136, 0.18);
+    border-color: #f61488;
+    box-shadow: 0 4px 12px rgba(246, 20, 136, 0.18);
+  }
+
+  &:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+  }
+}
+
+.resume-preview-frame {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 22rem;
+  border: 0;
+  background: #161926;
+}
+
+.resume-preview-message {
+  margin: 0;
+  padding: 0 1rem 1rem;
 }
 
 // Upload Progress
