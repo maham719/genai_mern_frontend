@@ -41,7 +41,10 @@ const handleResumeChange = (event) => {
 const handleGenerateReport = async () => {
   try {
     const resume = resumeInputRef?.current?.files[0];
-
+console.log("Selected resume:", resume);
+console.log("Resume name:", resume?.name);
+console.log("Resume type:", resume?.type);
+console.log("Resume size:", resume?.size);
     const data = await generateReport({
       jobDescription,
       selfDescription,
