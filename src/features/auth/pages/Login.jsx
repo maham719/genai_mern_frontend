@@ -4,6 +4,7 @@ import { Link } from 'react-router'
 import { useAuth } from '../hooks/useAuth.js'
 import { useNavigate } from 'react-router'
 import { toast } from "react-toastify";
+import Loading from '../../../components/Loading.jsx'
 const Login = () => {
 
     const {loading,handleLogin}=useAuth()
@@ -31,7 +32,7 @@ const handleSubmit = async (e) => {
     }
 };
     if(loading){
-        return(<main><h1>Loading...</h1></main>)
+        return <Loading message="Signing you in" />
     } 
   return (
     <main>

@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router";
 import "../style/interview.scss";
 import { useInterview } from "../hook/useInterview.js";
 import { useAuth } from "../../auth/hooks/useAuth.js";
+import Loading from '../../../components/Loading.jsx'
 const Interview = () => {
   const { interviewID } = useParams();
   const { loading, report, getReportByID,getResumePdf } = useInterview();
@@ -35,11 +36,7 @@ const Interview = () => {
   };
 
  if (loading || !report ) {
-  return (
-    <main>
-      <h1>Loading your interview plan...</h1>
-    </main>
-  );
+  return <Loading message="Loading your interview plan" />
 }
   const renderMainContent = () => {
     if (activeTab === "technical") {

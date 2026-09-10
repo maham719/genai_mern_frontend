@@ -4,6 +4,7 @@ import { useInterview } from '../hook/useInterview.js'
 import { useNavigate } from 'react-router'
 import { useAuth } from '../../auth/hooks/useAuth.js'
 import { toast } from "react-toastify";
+import Loading from '../../../components/Loading.jsx'
 
 const InterviewReport = () => {
 const {handleLogout}=useAuth()
@@ -65,11 +66,7 @@ const handleGenerateReport = async () => {
 
 
 if (loading) {
-  return (
-    <main className="full-page-loader">
-      <h1>Loading...</h1>
-    </main>
-  );
+  return <Loading message="Building your interview report" />
 }
   return (
     <div className='interview-report-container'>
